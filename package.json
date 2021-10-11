@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "watch": "nodemon"
+    "watch": "nodemon",
+    "bootstrap-data": "node bootstrap/bootstrap.data.js"
   },
   "dependencies": {
     "@prisma/client": "3.2.1",
@@ -16,11 +17,19 @@
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "express-graphql": "^0.12.0",
+    "fast-csv": "^4.3.6",
+    "graphql": "^15.6.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.13",
+    "pg": "^8.7.1",
     "prisma": "3.2.1",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.0.0"
   }
 }

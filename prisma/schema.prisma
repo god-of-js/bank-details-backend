@@ -11,15 +11,16 @@ generator client {
 }
 
 model Transactions {
-  id String @id
+  id Int @id @default(autoincrement())
+  uid String @default("")
   account String
   description String
   category String
   reference String
   currency String @default("GBP")
-  amount Int
+  amount String
   status String
-  transactionDate DateTime
-  createdAt DateTime
-  updatedAt DateTime
+  transactionDate String
+  createdAt String
+  updatedAt String
 }
