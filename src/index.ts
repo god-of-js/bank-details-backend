@@ -6,32 +6,23 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
 import { graphqlHTTP } from 'express-graphql';
-import { buildSchema } from 'graphql';
+import schema from "./graphql/queries";
+import rootValues from "./graphql/rootValues";
 
 const app: Application = express();
 
-app.use(cors())
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
 
-const root = {
-  hello: () => {
-    return 'Hello world!';
-  },
-};
 
 app.use('/graphql', graphqlHTTP({
   schema: schema,
-  rootValue: root,
+  rootValue: rootValues,
   graphiql: true,
 }));
 
