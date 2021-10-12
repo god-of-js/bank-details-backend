@@ -2,7 +2,7 @@ import { buildSchema } from 'graphql';
 
 const schema = buildSchema(`
 type Query {
-  transaction(id: ID): Transaction
+  transaction(id: Int!): Transaction
   transactions: [Transaction]
 }
 

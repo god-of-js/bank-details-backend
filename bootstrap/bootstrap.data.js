@@ -8,25 +8,25 @@ const fastcsv  = require('fast-csv');
 const { PrismaClient } =  require('@prisma/client');
 const prisma = new PrismaClient();
 
-const transaction = {
-  uid: "",
-  account: "",
-  description: "",
-  category: "",
-  reference: "",
-  currency: "",
-  amount: "",
-  status: "",
-  transactionDate: "",
-  createdAt: "",
-  updatedAt: "",
-}
-const transactionKeys = Object.keys(transaction);
 const stream = fs.createReadStream('bootstrap/Transactions.csv');
 const csvData = [];
 const csvStream = fastcsv
   .parse()
   .on('data', function(data) {
+    const transaction = {
+      uid: "",
+      account: "",
+      description: "",
+      category: "",
+      reference: "",
+      currency: "",
+      amount: "",
+      status: "",
+      transactionDate: "",
+      createdAt: "",
+      updatedAt: "",
+    }
+    const transactionKeys = Object.keys(transaction);
     transactionKeys.forEach(key => {
       transaction[key] = data[transactionKeys.indexOf(key)];
     });

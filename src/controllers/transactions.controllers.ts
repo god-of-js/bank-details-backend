@@ -8,7 +8,6 @@ class TransactionsController {
     }
 
     async getTransactionById(id:number): Promise<Transaction | null> {
-        console.log(id);
         const transaction = await TransactionService.getTransactionById(id);
         return transaction;
     }
